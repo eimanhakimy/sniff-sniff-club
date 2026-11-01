@@ -81,13 +81,19 @@ SSC.i18n = {
       devName: "Labu",
       devRole: "Software Programmer",
       altDev: "Labu, the software programmer",
-      footer: "Made by Teddy, Tam and ManKim",
+      noteSliderLabel: "Notes",
+      notePrev: "Previous note",
+      noteNext: "Next note",
+      noteDot: "Note",
+      footer: "Made by ManKim & the anak-anak bulus",
 
       navLabel: "Main",
       navHome: "Home",
       navCat: "Teddy & Tam",
       navVibes: "Good Vibes",
       navGallery: "Gallery",
+      seeAll: "See all",
+      showLess: "Show less",
       langLabel: "Language",
 
       lbLabel: "Photo viewer",
@@ -129,7 +135,21 @@ SSC.i18n = {
       { top: "Monday morning", bottom: "Me trying to be a functional person" },
       { top: "Me looking at my to-do list", bottom: "Nope" },
       { top: "When the snacks are finished", bottom: "But I still check the cupboard" },
-      { top: "Me: I'm fine", bottom: "Also me: *deep breath*" }
+      { top: "Me: I'm fine", bottom: "Also me: *deep breath*" },
+      { top: "Me: I'll just check one message", bottom: "Me, 2 hours later: still on my phone" },
+      { top: "Alarm: *rings*", bottom: "Me: five more minutes (x12)" },
+      { top: "Me: I don't need coffee", bottom: "Also me: *drinks the whole pot*" },
+      { top: "When you finally sit down", bottom: "And remember one more thing to do" },
+      { top: "Me pretending to listen", bottom: "Brain: snack time?" },
+      { top: "Diet starts on Monday", bottom: "Today is Tuesday" },
+      { top: "Me: I'll save money this month", bottom: "Online shopping: new phone, who dis?" },
+      { top: "Is this a meeting?", bottom: "It could have been a message" },
+      { top: "Me after one hour of being social", bottom: "Battery: 2%" },
+      { top: "Plans cancelled", bottom: "Best news of the week" },
+      { top: "Me looking for my phone", bottom: "While holding my phone" },
+      { top: "Me: I should drink more water", bottom: "Also me: *drinks more coffee*" },
+      { top: "When the Wi-Fi drops", bottom: "My mood drops too" },
+      { top: "Friday: finally", bottom: "Me: sleeps until noon" }
     ],
 
     facts: [
@@ -180,27 +200,59 @@ SSC.i18n = {
       ]
     },
 
+    /* Slides after the first note in A Little Note (the first slide is note1 + note2 above) */
+    notes: [
+      "You are allowed to take things slowly. Slow progress is still progress.",
+      "Even the strongest people have days when they need a break. This is yours.",
+      "You don't have to have everything figured out today.",
+      "Be as kind to yourself as you are to the people you care about.",
+      "Small steps count. Every little effort adds up.",
+      "It's okay to ask for help. It doesn't make you weak, it makes you wise.",
+      "Better days are coming, and you're doing a good job getting there.",
+      "Your feelings are valid, and so is your need to rest."
+    ],
+
     moods: {
-      sad: {
-        cat: "🐾 Sending you one tiny virtual paw hug.",
-        note: "Everything will be okay, one step at a time. It's fine to feel this way for a bit."
-      },
-      sleepy: {
-        cat: "😴 Ah, a fellow professional. I respect the dedication.",
-        note: "Your body is asking for rest. A cozy nap or an early night is a perfectly good plan."
-      },
-      tired: {
-        cat: "Understandable. Have you tried sleeping for 14 hours like me?",
-        note: "You've been doing a lot. Take a breath, drink some water, and go easy on yourself."
-      },
-      existing: {
-        cat: "😐 Ah, the classic loaf mode. Very advanced.",
-        note: "Some days are just for existing, and that counts. Small wins still count too."
-      },
-      happy: {
-        cat: "😻 Excellent! I am doing my happy tail wiggle for you.",
-        note: "Keep that energy! The world could use more of your good mood today."
-      }
+      sad: [
+        { cat: "🐾 Sending you one tiny virtual paw hug.", note: "Everything will be okay, one step at a time. It's fine to feel this way for a bit." },
+        { cat: "🥹 Teddy and Tam are sitting next to you right now. No questions asked.", note: "You don't have to explain anything. Just breathe and let it be a slow day." },
+        { cat: "💛 Sad days are allowed. So are cry breaks and snacks.", note: "Be gentle with yourself. You'd do the same for a friend." },
+        { cat: "🫶 *slow blink* That means 'I love you' in my language.", note: "Whatever is weighing on you, it won't be this heavy forever." },
+        { cat: "🌧️ Rainy feelings pass, just like rainy days.", note: "Drink some water, take a breath, and do one small nice thing for yourself." },
+        { cat: "🤗 Group hug from Teddy and Tam! Fur included, no extra charge.", note: "You're not alone, and you're doing better than you think." }
+      ],
+      sleepy: [
+        { cat: "😴 Ah, a fellow professional. I respect the dedication.", note: "Your body is asking for rest. A cozy nap or an early night is a perfectly good plan." },
+        { cat: "😴 Teddy and Tam have been sleepy for years. You're in good company.", note: "Listen to your body. A short rest can make everything feel lighter." },
+        { cat: "🛏️ Official diagnosis: the bed is calling.", note: "If you can, take a 20-minute nap. If you can't, at least stretch and sip some water." },
+        { cat: "🥱 Yawn detected. It's contagious, now I'm sleepy too.", note: "No shame in an early night. Tomorrow-you will say thank you." },
+        { cat: "💤 Eyes closing? Perfect nap weather.", note: "Rest isn't lazy. It's how you recharge for the good stuff." },
+        { cat: "🌙 Sleepy is just your body asking nicely before it asks loudly.", note: "Put the phone down for a bit and give yourself a cozy break." }
+      ],
+      tired: [
+        { cat: "Understandable. Have you tried sleeping for 14 hours like me?", note: "You've been doing a lot. Take a breath, drink some water, and go easy on yourself." },
+        { cat: "😵 You've been carrying a lot. Time to put some of it down.", note: "Pick just one thing to do next. The rest can wait." },
+        { cat: "🔋 Battery low. Please recharge with a snack and a break.", note: "Recharging is part of the work, not a break from it." },
+        { cat: "☕ Tired is real. Be kind to yourself today.", note: "Lower the bar a little today. Done is better than perfect." },
+        { cat: "🧸 Teddy would tell you to loaf around for a while. Tam agrees.", note: "Sit down, loosen your shoulders, and breathe slowly three times." },
+        { cat: "🌿 You don't have to be productive to be valuable.", note: "Rest first. The world can wait a few minutes." }
+      ],
+      existing: [
+        { cat: "😐 Ah, the classic loaf mode. Very advanced.", note: "Some days are just for existing, and that counts. Small wins still count too." },
+        { cat: "🍞 Loaf mode activated. Paws tucked, zero expectations.", note: "Some days are for simply being, and that's perfectly fine." },
+        { cat: "😶 Not good, not bad, just vibes. Respect.", note: "Neutral days are the quiet in between. They count too." },
+        { cat: "🪟 Staring out of the window counts as a hobby.", note: "Maybe do one tiny thing you enjoy, just to nudge the day along." },
+        { cat: "🫥 Teddy and Tam do this for hours every day. Elite behaviour.", note: "No need to force a mood. Let it come when it's ready." },
+        { cat: "🎲 Plot twist: 'okay' is a perfectly good way to feel.", note: "A glass of water and a short walk can make 'okay' a little brighter." }
+      ],
+      happy: [
+        { cat: "😻 Excellent! I am doing my happy tail wiggle for you.", note: "Keep that energy! The world could use more of your good mood today." },
+        { cat: "🎉 Zoomies approved! Run around the house if you must.", note: "Hold on to this feeling. Tell someone about it and spread a little." },
+        { cat: "😆 Your happiness just made the whole room warmer.", note: "Take a mental snapshot of what made today good." },
+        { cat: "🌟 Teddy and Tam are purring on your behalf.", note: "Enjoy it fully. You deserve every bit of it." },
+        { cat: "🍰 Happy mood detected. This calls for a snack.", note: "Share the good mood with someone today. It multiplies." },
+        { cat: "💃 Happy dance time! No audience required.", note: "Keep that energy. Tomorrow-you will thank you for the good memories." }
+      ]
     }
   },
 
@@ -276,13 +328,19 @@ SSC.i18n = {
       devName: "Labu",
       devRole: "Pengaturcara Perisian",
       altDev: "Labu, pengaturcara perisian",
-      footer: "Dibuat oleh Teddy, Tam dan ManKim",
+      noteSliderLabel: "Nota",
+      notePrev: "Nota sebelumnya",
+      noteNext: "Nota seterusnya",
+      noteDot: "Nota",
+      footer: "Dibuat oleh ManKim & anak-anak bulus",
 
       navLabel: "Utama",
       navHome: "Utama",
       navCat: "Teddy & Tam",
       navVibes: "Aura Positif",
       navGallery: "Galeri",
+      seeAll: "Lihat semua",
+      showLess: "Tunjuk kurang",
       langLabel: "Bahasa",
 
       lbLabel: "Pemapar gambar",
@@ -323,7 +381,21 @@ SSC.i18n = {
       { top: "Pagi Isnin", bottom: "Saya cuba jadi manusia yang berfungsi" },
       { top: "Saya tengok senarai tugas", bottom: "Tak nak" },
       { top: "Bila snek dah habis", bottom: "Tapi masih buka kabinet" },
-      { top: "Saya: saya okey", bottom: "Saya juga: *tarik nafas*" }
+      { top: "Saya: saya okey", bottom: "Saya juga: *tarik nafas*" },
+      { top: "Saya: nak semak satu mesej je", bottom: "Saya 2 jam kemudian: masih main telefon" },
+      { top: "Penggera: *berbunyi*", bottom: "Saya: lima minit lagi (x12)" },
+      { top: "Saya: tak perlu kopi", bottom: "Saya juga: *habiskan sepoci*" },
+      { top: "Bila akhirnya boleh duduk", bottom: "Tiba-tiba teringat satu lagi kerja" },
+      { top: "Saya pura-pura dengar", bottom: "Otak: waktu snek ke?" },
+      { top: "Diet mula hari Isnin", bottom: "Hari ini Selasa" },
+      { top: "Saya: bulan ni nak jimat", bottom: "Beli-belah online: telefon baru, siapa ni?" },
+      { top: "Ini mesyuarat ke?", bottom: "Boleh je hantar mesej" },
+      { top: "Saya lepas sejam bersosial", bottom: "Bateri: 2%" },
+      { top: "Pelan dibatalkan", bottom: "Berita terbaik minggu ini" },
+      { top: "Saya cari telefon", bottom: "Sambil pegang telefon" },
+      { top: "Saya: patut minum lebih air", bottom: "Saya juga: *minum lagi kopi*" },
+      { top: "Bila Wi-Fi terputus", bottom: "Mood pun ikut terputus" },
+      { top: "Jumaat: akhirnya", bottom: "Saya: tidur sampai tengah hari" }
     ],
 
     facts: [
@@ -374,27 +446,59 @@ SSC.i18n = {
       ]
     },
 
+    /* Slides after the first note in A Little Note (the first slide is note1 + note2 above) */
+    notes: [
+      "Awak dibenarkan buat sesuatu dengan perlahan. Kemajuan yang perlahan tetap kemajuan.",
+      "Orang paling kuat pun ada hari yang perlukan rehat. Inilah hari awak.",
+      "Awak tak perlu tahu semuanya hari ini.",
+      "Berbaik-baiklah dengan diri sendiri seperti awak berbaik dengan orang yang awak sayang.",
+      "Langkah kecil pun dikira. Setiap usaha kecil bertambah.",
+      "Tak apa untuk minta tolong. Ia tak menjadikan awak lemah, ia menjadikan awak bijak.",
+      "Hari yang lebih baik akan tiba, dan awak sedang buat kerja yang baik untuk sampai ke sana.",
+      "Perasaan awak sah, begitu juga keperluan awak untuk berehat."
+    ],
+
     moods: {
-      sad: {
-        cat: "🐾 Menghantar satu pelukan kaki maya yang kecil.",
-        note: "Semuanya akan okey, satu langkah demi satu langkah. Tak apa rasa begini sekejap."
-      },
-      sleepy: {
-        cat: "😴 Ah, rakan sekerja profesional. Saya hormati dedikasi awak.",
-        note: "Badan awak minta rehat. Tidur sekejap atau tidur awal memang pelan yang bagus."
-      },
-      tired: {
-        cat: "Faham. Pernah cuba tidur 14 jam macam saya?",
-        note: "Awak dah buat banyak benda. Tarik nafas, minum air, dan jangan terlalu keras pada diri sendiri."
-      },
-      existing: {
-        cat: "😐 Ah, mod roti yang klasik. Sangat canggih.",
-        note: "Ada hari memang untuk sekadar wujud, dan itu pun dikira. Kejayaan kecil pun dikira."
-      },
-      happy: {
-        cat: "😻 Bagus! Saya goyang ekor gembira untuk awak.",
-        note: "Kekalkan tenaga itu! Dunia perlukan lebih banyak mood baik awak hari ini."
-      }
+      sad: [
+        { cat: "🐾 Menghantar satu pelukan kaki maya yang kecil.", note: "Semuanya akan okey, satu langkah demi satu langkah. Tak apa rasa begini sekejap." },
+        { cat: "🥹 Teddy dan Tam duduk sebelah awak sekarang. Tak payah tanya apa-apa.", note: "Awak tak perlu terangkan apa-apa. Tarik nafas dan biar hari ini berjalan perlahan." },
+        { cat: "💛 Hari sedih pun dibenarkan. Begitu juga rehat menangis dan snek.", note: "Berlembutlah dengan diri sendiri. Awak pun akan buat begitu untuk kawan." },
+        { cat: "🫶 *kelip mata perlahan* Dalam bahasa saya, itu maksudnya 'saya sayang awak'.", note: "Apa pun yang membebankan, ia tak akan sentiasa seberat ini." },
+        { cat: "🌧️ Perasaan mendung akan berlalu, macam hari hujan.", note: "Minum air, tarik nafas, dan buat satu perkara kecil yang baik untuk diri sendiri." },
+        { cat: "🤗 Pelukan berkumpulan dari Teddy dan Tam! Bulu termasuk, tiada caj tambahan.", note: "Awak tak keseorangan, dan awak buat lebih baik daripada yang awak sangka." }
+      ],
+      sleepy: [
+        { cat: "😴 Ah, rakan sekerja profesional. Saya hormati dedikasi awak.", note: "Badan awak minta rehat. Tidur sekejap atau tidur awal memang pelan yang bagus." },
+        { cat: "😴 Teddy dan Tam dah lama mengantuk. Awak berada dalam kumpulan yang baik.", note: "Dengar cakap badan awak. Rehat sekejap boleh buat semuanya terasa lebih ringan." },
+        { cat: "🛏️ Diagnosis rasmi: katil sedang memanggil.", note: "Kalau boleh, tidur 20 minit. Kalau tak boleh, sekurang-kurangnya regang badan dan minum air." },
+        { cat: "🥱 Menguap dikesan. Berjangkit, sekarang saya pun mengantuk.", note: "Tak salah tidur awal malam ini. Awak esok akan ucap terima kasih." },
+        { cat: "💤 Mata dah nak tertutup? Cuaca sesuai untuk tidur.", note: "Berehat bukan malas. Ia cara awak mengecas untuk perkara yang best." },
+        { cat: "🌙 Mengantuk ialah badan awak minta dengan baik sebelum minta dengan kuat.", note: "Letak telefon sekejap dan beri diri awak rehat yang selesa." }
+      ],
+      tired: [
+        { cat: "Faham. Pernah cuba tidur 14 jam macam saya?", note: "Awak dah buat banyak benda. Tarik nafas, minum air, dan jangan terlalu keras pada diri sendiri." },
+        { cat: "😵 Awak dah bawa banyak benda. Masa untuk letak sebahagiannya.", note: "Pilih satu perkara sahaja untuk dibuat seterusnya. Yang lain boleh tunggu." },
+        { cat: "🔋 Bateri rendah. Sila cas dengan snek dan rehat.", note: "Mengecas diri ialah sebahagian daripada kerja, bukan berhenti kerja." },
+        { cat: "☕ Penat itu nyata. Berbaik-baiklah dengan diri sendiri hari ini.", note: "Rendahkan sedikit standard hari ini. Siap lebih baik daripada sempurna." },
+        { cat: "🧸 Teddy akan suruh awak berbaring santai sekejap. Tam setuju.", note: "Duduk, longgarkan bahu, tarik nafas perlahan tiga kali." },
+        { cat: "🌿 Awak tak perlu produktif untuk jadi bernilai.", note: "Rehat dahulu. Dunia boleh tunggu beberapa minit." }
+      ],
+      existing: [
+        { cat: "😐 Ah, mod roti yang klasik. Sangat canggih.", note: "Ada hari memang untuk sekadar wujud, dan itu pun dikira. Kejayaan kecil pun dikira." },
+        { cat: "🍞 Mod roti diaktifkan. Kaki dilipat, tiada jangkaan.", note: "Ada hari memang untuk sekadar wujud, dan itu tak mengapa." },
+        { cat: "😶 Tak baik, tak buruk, cuma vibes. Respect.", note: "Hari neutral ialah ketenangan di antara. Ia pun dikira." },
+        { cat: "🪟 Merenung ke luar tingkap dikira hobi.", note: "Mungkin buat satu perkara kecil yang awak suka, sekadar menolak hari ini sikit." },
+        { cat: "🫥 Teddy dan Tam buat begini berjam-jam setiap hari. Tingkah laku elit.", note: "Tak perlu paksa perasaan. Biar ia datang bila sedia." },
+        { cat: "🎲 Plot twist: 'okey' ialah cara yang elok untuk rasa.", note: "Segelas air dan jalan-jalan sekejap boleh buat 'okey' sedikit lebih cerah." }
+      ],
+      happy: [
+        { cat: "😻 Bagus! Saya goyang ekor gembira untuk awak.", note: "Kekalkan tenaga itu! Dunia perlukan lebih banyak mood baik awak hari ini." },
+        { cat: "🎉 Zoomies diluluskan! Berlarilah keliling rumah kalau perlu.", note: "Pegang perasaan ini. Ceritakan pada seseorang dan kongsi sedikit." },
+        { cat: "😆 Kegembiraan awak baru buat seluruh bilik jadi lebih hangat.", note: "Ambil gambar mental tentang apa yang buat hari ini baik." },
+        { cat: "🌟 Teddy dan Tam sedang mendengkur bagi pihak awak.", note: "Nikmatilah sepenuhnya. Awak layak mendapat semuanya." },
+        { cat: "🍰 Mood gembira dikesan. Ini memerlukan snek.", note: "Kongsi mood baik itu dengan seseorang hari ini. Ia berganda." },
+        { cat: "💃 Masa menari gembira! Tak perlukan penonton.", note: "Kekalkan tenaga itu. Awak esok akan berterima kasih untuk kenangan yang baik." }
+      ]
     }
   }
 };

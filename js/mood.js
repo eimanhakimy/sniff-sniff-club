@@ -1,4 +1,4 @@
-/* Cat's Mood Detector — the responses live in messages.js (SSC.i18n.*.moods). */
+/* Cat's Mood Detector — the replies live in messages.js (SSC.i18n.*.moods): several per mood, one is picked at random. */
 window.SSC = window.SSC || {};
 
 SSC.initMood = function () {
@@ -8,11 +8,23 @@ SSC.initMood = function () {
   var noteLine = document.getElementById("mood-note");
   var photo = document.getElementById("mood-img");
   var current = null;
+  var idx = 0;
+  var bags = {};
   if (!buttons.length || !out) return;
+
+  /* random reply for this mood, no repeats until all have been shown */
+  function nextIndex(mood) {
+    var n = SSC.i18n.en.moods[mood].length;
+    if (!bags[mood] || !bags[mood].length) {
+      bags[mood] = [];
+      for (var i = 0; i < n; i++) bags[mood].push(i);
+    }
+    return bags[mood].splice(Math.floor(Math.random() * bags[mood].length), 1)[0];
+  }
 
   function render() {
     if (!current) return;
-    var data = SSC.t().moods[current];
+    var data = SSC.t().moods[current][idx];
     catLine.textContent = data.cat;
     noteLine.textContent = data.note;
   }
@@ -20,6 +32,7 @@ SSC.initMood = function () {
   buttons.forEach(function (btn) {
     btn.addEventListener("click", function () {
       current = btn.dataset.mood;
+      idx = nextIndex(current);
       buttons.forEach(function (b) {
         var on = b === btn;
         b.classList.toggle("is-selected", on);

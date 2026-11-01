@@ -216,7 +216,7 @@
   /* ---------- Meme corner ----------
      Each click loads a random photo from the free cataas.com service and puts a
      funny caption on top. If it can't load (offline), it falls back to your own
-     photo assets/memes/meme-0N.jpg, then to a labelled placeholder. */
+     photo assets/memes/meme-NN.jpg, then to a labelled placeholder. */
   function initMemes() {
     var img = $("meme-img");
     var cap = $("meme-cap");
@@ -230,7 +230,7 @@
       $("meme-bottom").textContent = t.bottom;
     }
     function photo() {
-      localFile = "memes/meme-0" + (last + 1) + ".jpg";
+      localFile = "memes/meme-" + (last < 9 ? "0" : "") + (last + 1) + ".jpg";
       img.src = "https://cataas.com/cat?width=600&height=600&t=" + Date.now() + Math.floor(Math.random() * 1000);
     }
     img.addEventListener("error", function () {
@@ -403,7 +403,10 @@
     var grid = $("photo-grid");
     var filters = document.querySelectorAll(".filter");
     var names = { teddy: "Teddy", tam: "Tam" };
+    var LIMIT = 9;               /* photos shown before "See all" */
+    var more = $("photo-more");
     var current = "all";
+    var expanded = false;
 
     function visible() {
       return SSC.photos.all.filter(function (p) { return current === "all" || p.who === current; });
@@ -411,8 +414,9 @@
     function build() {
       var items = visible();
       var files = items.map(function (p) { return p.file; });
+      var shown = expanded ? items : items.slice(0, LIMIT);
       grid.innerHTML = "";
-      items.forEach(function (p, i) {
+      shown.forEach(function (p, i) {
         var li = document.createElement("li");
         var b = document.createElement("button");
         b.type = "button";
@@ -434,10 +438,18 @@
         li.appendChild(b);
         grid.appendChild(li);
       });
+      more.hidden = items.length <= LIMIT;
+      more.textContent = expanded ? ui("showLess") : ui("seeAll") + " (" + items.length + ")";
     }
+    more.addEventListener("click", function () {
+      expanded = !expanded;
+      build();
+      if (!expanded) $("photos").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    });
     filters.forEach(function (f) {
       f.addEventListener("click", function () {
         current = f.dataset.filter;
+        expanded = false;
         filters.forEach(function (x) {
           var on = x === f;
           x.classList.toggle("is-active", on);
@@ -448,6 +460,7 @@
     });
     build();
     SSC.renderers.push(function () {
+      more.textContent = expanded ? ui("showLess") : ui("seeAll") + " (" + visible().length + ")";
       Array.prototype.forEach.call(grid.querySelectorAll("button"), function (b, i) {
         var alt = b.querySelector("img").alt;
         b.setAttribute("aria-label", ui("openPhoto") + ": " + alt + " " + (i + 1));
@@ -455,9 +468,68 @@
     });
   }
 
+  /* ---------- A Little Note: swipeable slider ---------- */
+  function initNotes() {
+    var track = $("note-track");
+    var dots = $("note-dots");
+    var count = 1 + SSC.i18n.en.notes.length;   /* first slide is the original note */
+    var current = 0;
+    var texts = [];
+
+    SSC.i18n.en.notes.forEach(function () {
+      var slide = document.createElement("article");
+      slide.className = "slide slide--quote";
+      var p = document.createElement("p");
+      slide.appendChild(p);
+      track.appendChild(slide);
+      texts.push(p);
+    });
+
+    var dotBtns = [];
+    for (var i = 0; i < count; i++) {
+      (function (n) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.addEventListener("click", function () { go(n); });
+        dots.appendChild(b);
+        dotBtns.push(b);
+      })(i);
+    }
+
+    function mark() {
+      dotBtns.forEach(function (b, n) {
+        b.classList.toggle("is-active", n === current);
+        b.setAttribute("aria-current", n === current ? "true" : "false");
+      });
+    }
+    function go(n) {
+      n = (n + count) % count;
+      track.scrollTo({ left: n * track.clientWidth, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    var ticking = false;
+    track.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        current = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+        mark();
+        ticking = false;
+      });
+    });
+    $("note-prev").addEventListener("click", function () { go(current - 1); });
+    $("note-next").addEventListener("click", function () { go(current + 1); });
+
+    SSC.renderers.push(function () {
+      var list = SSC.t().notes;
+      texts.forEach(function (p, n) { p.textContent = list[n]; });
+      dotBtns.forEach(function (b, n) { b.setAttribute("aria-label", ui("noteDot") + " " + (n + 1) + "/" + count); });
+      mark();
+    });
+  }
+
   /* ---------- Bottom nav highlighting ---------- */
   function initNav() {
-    var groups = { home: "home", ceo: "cat", mood: "cat", memes: "cat", emergency: "cat", note: "cat", facts: "cat", happiness: "vibes", nap: "vibes", photos: "gallery", developer: "gallery" };
+    var groups = { home: "home", ceo: "cat", mood: "cat", happiness: "vibes", emergency: "vibes", note: "vibes", memes: "vibes", facts: "vibes", nap: "vibes", photos: "gallery", developer: "gallery" };
     var links = document.querySelectorAll(".bottomnav a");
     function mark(group) {
       links.forEach(function (a) { a.classList.toggle("is-active", a.dataset.group === group); });
@@ -488,6 +560,7 @@
     initFacts();
     initHappiness();
     initNap();
+    initNotes();
     initNav();
     initLang();   /* last: fills in all text and runs every renderer */
   });

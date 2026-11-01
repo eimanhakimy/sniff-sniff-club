@@ -94,6 +94,18 @@
       </div>
     </section>
 
+    <!-- SECTION 06 · DAILY HAPPINESS -->
+    <section id="happiness" class="section card">
+      <h2 data-i18n="happyTitle">A Little Happiness ♡</h2>
+      <div class="tabs" role="tablist" aria-label="Message type" data-i18n-label="tabsLabel">
+        <button class="tab is-active" role="tab" type="button" data-cat="compliments" aria-selected="true" data-i18n="tab_compliments">🌸 Compliments</button>
+        <button class="tab" role="tab" type="button" data-cat="jokes" aria-selected="false" data-i18n="tab_jokes">😹 Jokes</button>
+        <button class="tab" role="tab" type="button" data-cat="reminders" aria-selected="false" data-i18n="tab_reminders">🌿 Reminders</button>
+      </div>
+      <p class="happy__msg" id="happy-msg" role="status" aria-live="polite"></p>
+      <button class="btn btn--primary" id="happy-btn" type="button" data-i18n="happyBtn">Give me another</button>
+    </section>
+
     <!-- SECTION 03 · EMERGENCY CAT -->
     <section id="emergency" class="section card card--lavender emergency">
       <h2 data-i18n="emergencyTitle">🚨 Emergency Duo!</h2>
@@ -109,8 +121,19 @@
     <!-- SECTION 08 · A LITTLE NOTE -->
     <section id="note" class="section note">
       <h2 data-i18n="noteTitle">A Little Note ♡</h2>
-      <p data-i18n="note1">I hope this little corner of the internet brings you a smile, even on the days when things feel a little difficult.</p>
-      <p data-i18n="note2">Take care of yourself, keep smiling and remember that you deserve good things.</p>
+      <div class="slider" role="region" aria-roledescription="carousel" aria-label="Notes" data-i18n-label="noteSliderLabel">
+        <div class="slider__track" id="note-track" tabindex="0">
+          <article class="slide">
+            <p data-i18n="note1">I hope this little corner of the internet brings you a smile, even on the days when things feel a little difficult.</p>
+            <p data-i18n="note2">Take care of yourself, keep smiling and remember that you deserve good things.</p>
+          </article>
+        </div>
+        <div class="slider__controls">
+          <button class="slider__btn" id="note-prev" type="button" aria-label="Previous note" data-i18n-label="notePrev">‹</button>
+          <div class="slider__dots" id="note-dots"></div>
+          <button class="slider__btn" id="note-next" type="button" aria-label="Next note" data-i18n-label="noteNext">›</button>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION · MEME CORNER -->
@@ -118,7 +141,7 @@
       <h2 data-i18n="memeTitle">Meme Corner 😹</h2>
       <p class="section__hint" data-i18n="memeHint">Fresh from Teddy and Tam's top-secret meme lab.</p>
       <figure class="meme">
-        <img id="meme-img" src="assets/memes/meme-01.jpg" alt="A funny meme" data-i18n-alt="altMeme" width="600" height="600">
+        <img id="meme-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="A funny meme" data-i18n-alt="altMeme" width="600" height="600">
         <figcaption class="meme__cap" id="meme-cap" role="status" aria-live="polite"><span id="meme-top"></span><span id="meme-bottom"></span></figcaption>
       </figure>
       <button class="btn btn--primary" id="meme-btn" type="button" data-i18n="memeBtn">Next Meme</button>
@@ -129,18 +152,6 @@
       <h2 data-i18n="factsTitle">Did You Know?</h2>
       <p class="fact" id="fact-text" role="status" aria-live="polite"></p>
       <button class="btn btn--soft" id="fact-btn" type="button" data-i18n="factBtn">Another Fun Fact</button>
-    </section>
-
-    <!-- SECTION 06 · DAILY HAPPINESS -->
-    <section id="happiness" class="section card">
-      <h2 data-i18n="happyTitle">A Little Happiness ♡</h2>
-      <div class="tabs" role="tablist" aria-label="Message type" data-i18n-label="tabsLabel">
-        <button class="tab is-active" role="tab" type="button" data-cat="compliments" aria-selected="true" data-i18n="tab_compliments">🌸 Compliments</button>
-        <button class="tab" role="tab" type="button" data-cat="jokes" aria-selected="false" data-i18n="tab_jokes">😹 Jokes</button>
-        <button class="tab" role="tab" type="button" data-cat="reminders" aria-selected="false" data-i18n="tab_reminders">🌿 Reminders</button>
-      </div>
-      <p class="happy__msg" id="happy-msg" role="status" aria-live="polite"></p>
-      <button class="btn btn--primary" id="happy-btn" type="button" data-i18n="happyBtn">Give me another</button>
     </section>
 
     <!-- SECTION 07 · NAP PERMISSION -->
@@ -166,6 +177,7 @@
         <button class="filter" type="button" data-filter="tam" aria-pressed="false">Tam</button>
       </div>
       <ul class="photos" id="photo-grid"></ul>
+      <button class="btn btn--soft photos__more" id="photo-more" type="button" hidden></button>
     </section>
 
     <!-- SECTION · MEET THE DEVELOPER -->
@@ -180,7 +192,7 @@
   </main>
 
   <footer class="footer">
-    <p data-i18n="footer">Made by Teddy, Tam and ManKim</p>
+    <p data-i18n="footer">Made by ManKim &amp; the anak-anak bulus</p>
   </footer>
 
   <!-- Bottom navigation -->

@@ -52,16 +52,24 @@ SSC.photos = {
   }
 };
 
-/* Every photo in the Gallery section (all of Teddy's and Tam's folders). */
+/* Every photo in the Gallery section (all of Teddy's and Tam's folders).
+   Teddy and Tam alternate so the first 8 shown are a nice mix. Numbers in `last`
+   (phone lock screens) go to the end of their list. */
 SSC.photos.all = (function () {
-  var out = [];
-  function add(who, n) {
-    out.push({ who: who, file: who + "/main.jpg" });
+  function list(who, n, last) {
+    var front = [who + "/main.jpg"], back = [];
     for (var i = 1; i <= n; i++) {
-      out.push({ who: who, file: who + "/" + who + "-" + (i < 10 ? "0" : "") + i + ".jpg" });
+      var f = who + "/" + who + "-" + (i < 10 ? "0" : "") + i + ".jpg";
+      (last.indexOf(i) > -1 ? back : front).push(f);
     }
+    return front.concat(back).map(function (file) { return { who: who, file: file }; });
   }
-  add("teddy", 34);
-  add("tam", 5);
+  var t = list("teddy", 34, [4, 16]);
+  var m = list("tam", 5, []);
+  var out = [];
+  for (var i = 0; i < Math.max(t.length, m.length); i++) {
+    if (t[i]) out.push(t[i]);
+    if (m[i]) out.push(m[i]);
+  }
   return out;
 })();
