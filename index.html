@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sniff Sniff Club 🐾</title>
+  <meta name="description" content="A tiny corner of the internet with a little happiness, courtesy of Teddy and Tam.">
+  <meta name="theme-color" content="#F9E8EF">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!--
+    Text is filled in from js/messages.js using the data-i18n attributes.
+    data-i18n="key"       -> element text
+    data-i18n-alt="key"   -> image alt text
+    data-i18n-label="key" -> aria-label
+    The English text below is only a fallback.
+  -->
+
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <!-- Language switch -->
+  <div class="langswitch" role="group" aria-label="Language" data-i18n-label="langLabel">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="ms" aria-pressed="false">BM</button>
+  </div>
+
+  <main id="main">
+
+    <!-- SECTION 01 · HERO -->
+    <section id="home" class="section hero">
+      <p class="brand">🐾 Sniff Sniff Club</p>
+      <h1 data-i18n="heroTitle">Hey, you! ♡</h1>
+      <p class="hero__sub" data-i18n="heroSub">Need a little happiness?</p>
+      <p class="hero__text" data-i18n="heroText">Your favourite therapists, Teddy and Tam, are here.</p>
+
+      <div class="hero__photo-wrap">
+        <span class="deco deco--paw1" aria-hidden="true">🐾</span>
+        <span class="deco deco--paw2" aria-hidden="true">🐾</span>
+        <div class="hero__photo" id="hero-photo">
+          <img src="assets/teddy/teddy-20.jpg" id="hero-img" data-sniff-src="assets/teddy/teddy-17.jpg" alt="The CEO, looking adorable" data-i18n-alt="altHome" data-fallback="teddy/teddy-20.jpg" width="600" height="600" fetchpriority="high">
+        </div>
+      </div>
+
+      <button class="btn btn--primary btn--big" id="sniff-btn" type="button"><span data-i18n="sniffBtn">SNIFF SNIFF</span> <span class="nose" aria-hidden="true">🐽</span></button>
+
+      <div class="bubble" id="sniff-result" role="status" aria-live="polite" hidden>
+        <p class="bubble__react" id="sniff-react"></p>
+        <p class="bubble__msg" id="sniff-msg"></p>
+      </div>
+    </section>
+
+    <!-- SECTION 04 · MEET THE CEO -->
+    <section id="ceo" class="section">
+      <h2 data-i18n="ceoTitle">Meet the CEOs 🐱</h2>
+      <p class="section__hint" data-i18n="ceoHint">Tap a photo to see it bigger.</p>
+      <ul class="gallery" id="gallery">
+        <li class="gallery__item" data-cat="teddy">
+          <button type="button" class="gallery__open">
+            <img src="assets/teddy/main.jpg" alt="Teddy, doing absolutely nothing" data-i18n-alt="alt1" data-fallback="teddy/main.jpg" loading="lazy" width="400" height="400">
+          </button>
+          <h3 class="gallery__name">Teddy</h3>
+          <p class="gallery__caption" data-i18n="cap1">CEO of Doing Absolutely Nothing.</p>
+        </li>
+        <li class="gallery__item" data-cat="tam">
+          <button type="button" class="gallery__open">
+            <img src="assets/tam/main.jpg" alt="Tam, certified sniff specialist" data-i18n-alt="alt2" data-fallback="tam/main.jpg" loading="lazy" width="400" height="400">
+          </button>
+          <h3 class="gallery__name">Tam</h3>
+          <p class="gallery__caption" data-i18n="cap2">Certified Sniff Specialist.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION 02 · MOOD DETECTOR -->
+    <section id="mood" class="section card">
+      <h2 data-i18n="moodTitle">How are you feeling today?</h2>
+      <p class="section__hint" data-i18n="moodHint">Tap one. Teddy and Tam will respond.</p>
+      <div class="mood__grid" role="group" aria-label="Choose your mood" data-i18n-label="moodGroup">
+        <button class="mood__btn" type="button" data-mood="sad" aria-pressed="false"><span class="emoji" aria-hidden="true">🥹</span><span data-i18n="mood_sad">A little sad</span></button>
+        <button class="mood__btn" type="button" data-mood="sleepy" aria-pressed="false"><span class="emoji" aria-hidden="true">😴</span><span data-i18n="mood_sleepy">Sleepy</span></button>
+        <button class="mood__btn" type="button" data-mood="tired" aria-pressed="false"><span class="emoji" aria-hidden="true">😵</span><span data-i18n="mood_tired">Tired</span></button>
+        <button class="mood__btn" type="button" data-mood="existing" aria-pressed="false"><span class="emoji" aria-hidden="true">😐</span><span data-i18n="mood_existing">Just existing</span></button>
+        <button class="mood__btn" type="button" data-mood="happy" aria-pressed="false"><span class="emoji" aria-hidden="true">😆</span><span data-i18n="mood_happy">Happy</span></button>
+      </div>
+      <div class="result" id="mood-result" role="status" aria-live="polite" hidden>
+        <img class="result__img" id="mood-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="The CEO reacting to your mood" data-i18n-alt="altMood" data-fallback="teddy/main.jpg" width="240" height="240">
+        <p class="result__cat" id="mood-cat"></p>
+        <p class="result__note" id="mood-note"></p>
+      </div>
+    </section>
+
+    <!-- SECTION 03 · EMERGENCY CAT -->
+    <section id="emergency" class="section card card--lavender emergency">
+      <h2 data-i18n="emergencyTitle">🚨 Emergency Duo!</h2>
+      <p class="section__hint" data-i18n="emergencyHint">Bad vibes detected? We have a solution.</p>
+      <button class="btn btn--alert btn--big" id="deploy-btn" type="button" data-i18n="deployBtn">DEPLOY TEDDY &amp; TAM!</button>
+      <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false"></button>
+      <figure class="emergency__stage" id="emergency-stage" hidden>
+        <img src="assets/teddy/teddy-25.jpg" alt="The emergency cat has arrived" data-i18n-alt="altEmergency" data-fallback="teddy/teddy-25.jpg" loading="lazy" width="600" height="450">
+      </figure>
+      <p class="result__note emergency__msg" id="emergency-msg" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- SECTION 08 · A LITTLE NOTE -->
+    <section id="note" class="section note">
+      <h2 data-i18n="noteTitle">A Little Note ♡</h2>
+      <p data-i18n="note1">I hope this little corner of the internet brings you a smile, even on the days when things feel a little difficult.</p>
+      <p data-i18n="note2">Take care of yourself, keep smiling and remember that you deserve good things.</p>
+    </section>
+
+    <!-- SECTION · MEME CORNER -->
+    <section id="memes" class="section card card--cream">
+      <h2 data-i18n="memeTitle">Meme Corner 😹</h2>
+      <p class="section__hint" data-i18n="memeHint">Fresh from Teddy and Tam's top-secret meme lab.</p>
+      <figure class="meme">
+        <img id="meme-img" src="assets/memes/meme-01.jpg" alt="A funny meme" data-i18n-alt="altMeme" width="600" height="600">
+        <figcaption class="meme__cap" id="meme-cap" role="status" aria-live="polite"><span id="meme-top"></span><span id="meme-bottom"></span></figcaption>
+      </figure>
+      <button class="btn btn--primary" id="meme-btn" type="button" data-i18n="memeBtn">Next Meme</button>
+    </section>
+
+    <!-- SECTION 05 · CAT FACTS -->
+    <section id="facts" class="section card card--cream">
+      <h2 data-i18n="factsTitle">Did You Know?</h2>
+      <p class="fact" id="fact-text" role="status" aria-live="polite"></p>
+      <button class="btn btn--soft" id="fact-btn" type="button" data-i18n="factBtn">Another Fun Fact</button>
+    </section>
+
+    <!-- SECTION 06 · DAILY HAPPINESS -->
+    <section id="happiness" class="section card">
+      <h2 data-i18n="happyTitle">A Little Happiness ♡</h2>
+      <div class="tabs" role="tablist" aria-label="Message type" data-i18n-label="tabsLabel">
+        <button class="tab is-active" role="tab" type="button" data-cat="compliments" aria-selected="true" data-i18n="tab_compliments">🌸 Compliments</button>
+        <button class="tab" role="tab" type="button" data-cat="jokes" aria-selected="false" data-i18n="tab_jokes">😹 Jokes</button>
+        <button class="tab" role="tab" type="button" data-cat="reminders" aria-selected="false" data-i18n="tab_reminders">🌿 Reminders</button>
+      </div>
+      <p class="happy__msg" id="happy-msg" role="status" aria-live="polite"></p>
+      <button class="btn btn--primary" id="happy-btn" type="button" data-i18n="happyBtn">Give me another</button>
+    </section>
+
+    <!-- SECTION 07 · NAP PERMISSION -->
+    <section id="nap" class="section card card--lavender">
+      <h2 data-i18n="napTitle">Official Nap Permission 💤</h2>
+      <button class="btn btn--primary btn--big" id="nap-btn" type="button" data-i18n="napBtn">Request Permission</button>
+      <div class="nap__result" id="nap-result" hidden>
+        <p class="stamp" id="nap-msg" role="status" aria-live="polite"></p>
+        <figure class="nap__photo">
+          <img src="assets/teddy/teddy-26.jpg" alt="The CEO fast asleep" data-i18n-alt="altNap" data-fallback="teddy/teddy-26.jpg" loading="lazy" width="600" height="450">
+          <span class="zzz" aria-hidden="true">z<span>z</span><span>z</span></span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SECTION · GALLERY -->
+    <section id="photos" class="section">
+      <h2 data-i18n="galleryTitle">Gallery 📸</h2>
+      <p class="section__hint" data-i18n="galleryHint">Every photo of Teddy and Tam. Tap one to see it bigger.</p>
+      <div class="filters" role="group" aria-label="Show photos of" data-i18n-label="filterLabel">
+        <button class="filter is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">All</button>
+        <button class="filter" type="button" data-filter="teddy" aria-pressed="false">Teddy</button>
+        <button class="filter" type="button" data-filter="tam" aria-pressed="false">Tam</button>
+      </div>
+      <ul class="photos" id="photo-grid"></ul>
+    </section>
+
+    <!-- SECTION · MEET THE DEVELOPER -->
+    <section id="developer" class="section developer">
+      <h2 data-i18n="devTitle">Meet the Developer</h2>
+      <figure class="dev">
+        <img src="assets/labu/main.jpg" alt="Labu, the software programmer" data-i18n-alt="altDev" data-fallback="labu/main.jpg" loading="lazy" width="400" height="400">
+        <figcaption class="dev__name"><strong data-i18n="devName">Labu</strong> <span data-i18n="devRole">Software Programmer</span></figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footer">Made by Teddy, Tam and ManKim</p>
+  </footer>
+
+  <!-- Bottom navigation -->
+  <nav class="bottomnav" aria-label="Main" data-i18n-label="navLabel">
+    <a href="#home" data-group="home"><span aria-hidden="true">🏠</span><b data-i18n="navHome">Home</b></a>
+    <a href="#ceo" data-group="cat"><span aria-hidden="true">🐱</span><b data-i18n="navCat">Teddy &amp; Tam</b></a>
+    <a href="#happiness" data-group="vibes"><span aria-hidden="true">✨</span><b data-i18n="navVibes">Good Vibes</b></a>
+    <a href="#photos" data-group="gallery"><span aria-hidden="true">📸</span><b data-i18n="navGallery">Gallery</b></a>
+  </nav>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" data-i18n-label="lbLabel" hidden>
+    <button class="lightbox__close" id="lb-close" type="button" aria-label="Close" data-i18n-label="lbClose">✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lb-prev" type="button" aria-label="Previous photo" data-i18n-label="lbPrev">‹</button>
+    <figure class="lightbox__fig">
+      <img id="lb-img" src="" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lb-next" type="button" aria-label="Next photo" data-i18n-label="lbNext">›</button>
+  </div>
+
+  <script src="js/messages.js"></script>
+  <script src="js/photos.js"></script>
+  <script src="js/mood.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
