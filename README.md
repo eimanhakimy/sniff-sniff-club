@@ -29,6 +29,10 @@ Names are case-sensitive on GitHub Pages, so use lowercase `.jpg` (rename `.jpeg
 - The EN / BM switch (top right) remembers the choice. First visit picks BM automatically if the phone's language is Malay.
 - The two cats' names (Teddy, Tam) are in `index.html` (`class="gallery__name"`); their funny titles are `cap1`/`cap2` in `js/messages.js`.
 
+**Extras:** the welcome screen ("Hi Nissa"), the night mode button, the "Open When..." letters (`letters` in `js/messages.js`, the same order in English and Bahasa Melayu) and the Purr Corner. The letters are drafts: replace them with your own words. Night mode follows the phone's setting until the visitor taps the moon.
+
+**CEO profile pages:** `teddy.html` and `tam.html` (opened from the "See more details" button on each CEO card). Their text (tagline, bio, the profile rows, trait chips and quotes) is under `profiles` in `js/messages.js`, in English and Bahasa Melayu. The current details are playful drafts: replace them with real ones. Photos come from `assets/teddy/` and `assets/tam/`.
+
 Colours are CSS variables at the top of `css/style.css`.
 
 ## Sound
@@ -66,6 +70,7 @@ css/style.css
 js/messages.js   text content
 js/mood.js       mood detector
 js/main.js       interactions
+js/extras.js     welcome screen, scroll reveal, paw trail, night mode, letters, Purr Corner
 assets/teddy/    Teddy's photos
 assets/tam/      Tam's photos
 assets/labu/     developer photo

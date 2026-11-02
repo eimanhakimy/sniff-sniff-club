@@ -42,6 +42,7 @@ SSC.initMood = function () {
       photo.dataset.fallback = file;
       photo.src = "assets/" + file;
       render();
+      if (current === "happy" && SSC.burst) SSC.burst(btn, ["😻", "🎉", "✨", "💛"]);
       out.hidden = false;
       out.classList.remove("pop");
       void out.offsetWidth; /* restart the animation */

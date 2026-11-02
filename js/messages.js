@@ -92,9 +92,41 @@ SSC.i18n = {
       navCat: "Teddy & Tam",
       navVibes: "Good Vibes",
       navGallery: "Gallery",
+      seeMore: "See more details",
+      profileBack: "‹ Back to home",
+      profileEyebrow: "Meet the CEO",
+      profileTap: "Tap the photo for a surprise ✨",
+      profileCardTitle: "Official CEO Profile",
+      quoteTitle: "Words of Wisdom",
+      quoteBtn: "Another quote",
+      albumTitle: "Photo Album",
+      meetTeddy: "Meet Teddy →",
+      meetTam: "Meet Tam →",
       seeAll: "See all",
       showLess: "Show less",
       langLabel: "Language",
+      introHi: "Hi Nissa 🐾",
+      introSub: "Teddy and Tam made a little corner of happiness just for you.",
+      introEnter: "Come in",
+      introSkip: "Skip",
+      themeToDark: "Switch to night mode",
+      themeToLight: "Switch to day mode",
+      lettersTitle: "Open When... 💌",
+      lettersHint: "Tap an envelope when you need it.",
+      letterClose: "Close letter",
+      letterAgain: "Another one 💌",
+      purrTitle: "Purr Corner 🌙",
+      purrHint: "Breathe slowly with Tam. In and out, no rush.",
+      altPurr: "Tam resting peacefully",
+      breatheStart: "Start breathing",
+      breatheStop: "Stop",
+      breatheIdle: "Ready when you are",
+      breatheIn: "Breathe in…",
+      breatheHold: "Hold…",
+      breatheOut: "Breathe out slowly…",
+      purrOn: "🎶 Purr",
+      purrOff: "⏹ Stop purring",
+      purrMuted: "Sound is off. Turn it on in Emergency Duo 🔊",
 
       lbLabel: "Photo viewer",
       lbClose: "Close",
@@ -199,6 +231,195 @@ SSC.i18n = {
         "It's okay to rest. Rest is productive too."
       ]
     },
+
+    /* Profile pages (teddy.html, tam.html). These are playful DRAFT details: edit freely. */
+    profiles: {
+      "teddy": {
+        "tagline": "Tuxedo coat, a little moustache marking, and professionally unbothered.",
+        "bio": "Teddy runs the company from the carpet, mostly lying down. Decisions are made slowly, ideally after a snack.",
+        "rows": [
+          [
+            "Official title",
+            "CEO of Doing Absolutely Nothing"
+          ],
+          [
+            "Department",
+            "Nap Operations & Window Supervision"
+          ],
+          [
+            "Dress code",
+            "Black-and-white tuxedo, moustache included"
+          ],
+          [
+            "Superpower",
+            "Appearing the moment a snack is opened"
+          ],
+          [
+            "Favourite hobby",
+            "Loafing around on the carpet"
+          ],
+          [
+            "Weakness",
+            "Closed doors and empty bowls"
+          ],
+          [
+            "Motto",
+            "If it fits, I sit."
+          ]
+        ],
+        "traits": [
+          "😴 Professional napper",
+          "👀 Snack inspector",
+          "🎩 Always dressed up",
+          "🫶 Certified cuddle consultant"
+        ],
+        "quotes": [
+          "Why run when you can lie down?",
+          "A closed door is just a challenge to meow at.",
+          "Today's to-do list: nap, snack, nap.",
+          "Be like a tuxedo: always ready, rarely in a hurry.",
+          "Good things come to those who nap.",
+          "Stress is temporary. Loaf is forever."
+        ]
+      },
+      "tam": {
+        "tagline": "Fluffy black coat, golden eyes, and a little bell to announce arrivals.",
+        "bio": "Tam handles quality control by sniffing everything in the house. Fluffy, curious, and always on a schedule that only Tam understands.",
+        "rows": [
+          [
+            "Official title",
+            "Certified Sniff Specialist"
+          ],
+          [
+            "Department",
+            "Sniffing, Investigations & Quality Control"
+          ],
+          [
+            "Dress code",
+            "All black, with a little bell accessory"
+          ],
+          [
+            "Superpower",
+            "Blending into the dark, then appearing next to you"
+          ],
+          [
+            "Favourite hobby",
+            "Sunbathing and investigating every corner"
+          ],
+          [
+            "Weakness",
+            "Belly rubs (it's a trap, but irresistible)"
+          ],
+          [
+            "Motto",
+            "Sniff first, ask questions later."
+          ]
+        ],
+        "traits": [
+          "👃 Chief sniffer",
+          "🌑 Master of shadows",
+          "🔔 Bell-powered entrance",
+          "🌞 Sunbathing expert"
+        ],
+        "quotes": [
+          "Sniff everything. Decide later.",
+          "Black fur goes with everything, including a bad mood.",
+          "If you can't find me, I'm probably in the best spot of the house.",
+          "A good day starts with a long stretch.",
+          "A belly rub a day keeps the grumpiness away.",
+          "Be curious. Even the corner of the room has a story."
+        ]
+      }
+    },
+
+    /* Open When... letters: parallel lists, same order in EN and BM */
+    letters: [
+      {
+        emoji: "🥹",
+        title: "Open when you're sad",
+        texts: [
+          "It's okay to feel sad. You don't have to explain it or fix it today.",
+          "Take a slow breath. In for four, out for six. You're doing fine.",
+          "Sad days don't last forever, even when they feel endless right now.",
+          "Drink some water and loosen your shoulders. Small kindnesses to yourself count.",
+          "You don't have to be strong all the time. Resting is allowed.",
+          "Teddy and Tam are sitting right next to you. No talking needed.",
+          "Your feelings make sense. Nobody gets to tell you to just get over it.",
+          "If you can, step outside for a minute and look at the sky. It helps more than you'd think.",
+          "You have gotten through every hard day so far. That's a perfect record.",
+          "Whatever happened today, you are still someone worth caring about.",
+          "Tomorrow is a fresh page. Tonight, you only have to be gentle with yourself."
+        ]
+      },
+      {
+        emoji: "🥱",
+        title: "Open when you're tired",
+        texts: [
+          "You've been carrying a lot. You're allowed to put it down for a little while.",
+          "Rest is not laziness. It's how you get ready for tomorrow.",
+          "Close your eyes for one minute. The world can wait.",
+          "The to-do list will still be there later. You matter more than the list.",
+          "Even phones need charging. So do you.",
+          "Eat something, drink something, and sit somewhere comfy.",
+          "Doing less today does not mean you are failing.",
+          "Teddy has been napping all day and he's still the CEO. You can rest too.",
+          "A short walk or a stretch can wake you up a little. Or a nap. A nap is also fine.",
+          "Be proud of what you did manage to do today, even if it feels small.",
+          "Go to bed a little earlier tonight. Future you will say thank you."
+        ]
+      },
+      {
+        emoji: "🌧️",
+        title: "Open when you feel not good enough",
+        texts: [
+          "You are so much more than your mistakes and your bad days.",
+          "Nobody has it all figured out. Everyone is learning as they go.",
+          "People are glad you exist, and that includes two very fluffy CEOs.",
+          "Comparing yourself to others is unfair. You only see their highlights.",
+          "You don't have to be perfect to be worth it.",
+          "Think of one thing you did well this week. It counts.",
+          "Talk to yourself the way you'd talk to a good friend.",
+          "Mistakes are proof that you tried. Trying is brave.",
+          "You have already grown more than you realise.",
+          "Your kindness makes a difference to the people around you.",
+          "You are enough, exactly as you are today."
+        ]
+      },
+      {
+        emoji: "🌙",
+        title: "Open when you can't sleep",
+        texts: [
+          "Let your shoulders drop and unclench your jaw.",
+          "Whatever is on your mind will still be there tomorrow, and you'll handle it better after rest.",
+          "Try breathing in for four and out for six. Or visit the Purr Corner.",
+          "Put your phone down, if you can. The screen can wait until morning.",
+          "Think of Tam curled up in a warm, soft spot. Now join in.",
+          "Your body knows how to sleep. Just give it a quiet moment.",
+          "It's okay if sleep takes a while. Lying down quietly still rests you.",
+          "Picture a place that makes you feel safe, and stay there for a bit.",
+          "Tomorrow's worries are tomorrow's job. Tonight is for resting.",
+          "A glass of water and a dim light can make a big difference.",
+          "Goodnight. You did enough today."
+        ]
+      },
+      {
+        emoji: "🎉",
+        title: "Open when you're happy",
+        texts: [
+          "Yay! Hold on to this feeling and soak it all up.",
+          "You deserve every bit of this happiness.",
+          "Teddy and Tam are doing happy zoomies for you right now.",
+          "Take a mental photo of this moment. You'll want it on a gloomy day.",
+          "Share your happy with someone today. It doubles.",
+          "Your smile is making the world a little brighter.",
+          "Dance a little, even if it's just in your chair.",
+          "Remember how this feels. You can come back to it.",
+          "Good days like this are proof that good things happen.",
+          "Treat yourself to a snack to celebrate. Teddy approves.",
+          "Keep shining. We love seeing you happy."
+        ]
+      }
+    ],
 
     /* Slides after the first note in A Little Note (the first slide is note1 + note2 above) */
     notes: [
@@ -339,9 +560,41 @@ SSC.i18n = {
       navCat: "Teddy & Tam",
       navVibes: "Aura Positif",
       navGallery: "Galeri",
+      seeMore: "Lihat butiran lanjut",
+      profileBack: "‹ Kembali ke laman utama",
+      profileEyebrow: "Kenali Bos",
+      profileTap: "Tekan gambar untuk kejutan ✨",
+      profileCardTitle: "Profil Rasmi Bos",
+      quoteTitle: "Kata-Kata Hikmah",
+      quoteBtn: "Kata-kata lagi",
+      albumTitle: "Album Gambar",
+      meetTeddy: "Kenali Teddy →",
+      meetTam: "Kenali Tam →",
       seeAll: "Lihat semua",
       showLess: "Tunjuk kurang",
       langLabel: "Bahasa",
+      introHi: "Hai Nissa 🐾",
+      introSub: "Teddy dan Tam buat satu sudut kecil penuh kegembiraan khas untuk awak.",
+      introEnter: "Masuk",
+      introSkip: "Langkau",
+      themeToDark: "Tukar ke mod malam",
+      themeToLight: "Tukar ke mod siang",
+      lettersTitle: "Buka Bila... 💌",
+      lettersHint: "Tekan sampul surat bila awak perlukannya.",
+      letterClose: "Tutup surat",
+      letterAgain: "Satu lagi 💌",
+      purrTitle: "Sudut Dengkur 🌙",
+      purrHint: "Bernafas perlahan bersama Tam. Masuk dan keluar, tak perlu tergesa-gesa.",
+      altPurr: "Tam sedang berehat dengan tenang",
+      breatheStart: "Mula bernafas",
+      breatheStop: "Berhenti",
+      breatheIdle: "Bila-bila awak sedia",
+      breatheIn: "Tarik nafas…",
+      breatheHold: "Tahan…",
+      breatheOut: "Hembus perlahan…",
+      purrOn: "🎶 Dengkur",
+      purrOff: "⏹ Henti dengkur",
+      purrMuted: "Bunyi dimatikan. Hidupkan di Emergency Duo 🔊",
 
       lbLabel: "Pemapar gambar",
       lbClose: "Tutup",
@@ -445,6 +698,195 @@ SSC.i18n = {
         "Tak apa untuk berehat. Berehat pun satu produktiviti."
       ]
     },
+
+    /* Profile pages (teddy.html, tam.html). These are playful DRAFT details: edit freely. */
+    profiles: {
+      "teddy": {
+        "tagline": "Berkot tuksedo, bertanda misai kecil, dan sangat santai.",
+        "bio": "Teddy mengurus syarikat dari atas permaidani, kebanyakannya sambil berbaring. Keputusan dibuat perlahan-lahan, sebaiknya selepas snek.",
+        "rows": [
+          [
+            "Jawatan rasmi",
+            "Ketua Pegawai Eksekutif Tak Buat Apa-Apa"
+          ],
+          [
+            "Jabatan",
+            "Operasi Tidur & Penyeliaan Tingkap"
+          ],
+          [
+            "Kod pakaian",
+            "Tuksedo hitam putih, termasuk misai"
+          ],
+          [
+            "Kuasa luar biasa",
+            "Muncul sebaik sahaja snek dibuka"
+          ],
+          [
+            "Hobi kegemaran",
+            "Berbaring santai atas permaidani"
+          ],
+          [
+            "Kelemahan",
+            "Pintu tertutup dan mangkuk kosong"
+          ],
+          [
+            "Moto",
+            "Kalau muat, aku duduk."
+          ]
+        ],
+        "traits": [
+          "😴 Tukang tidur profesional",
+          "👀 Pemeriksa snek",
+          "🎩 Sentiasa segak berpakaian",
+          "🫶 Perunding pelukan bertauliah"
+        ],
+        "quotes": [
+          "Kenapa berlari kalau boleh berbaring?",
+          "Pintu tertutup cuma cabaran untuk dimeow.",
+          "Senarai tugas hari ini: tidur, snek, tidur.",
+          "Jadilah macam tuksedo: sentiasa bersedia, jarang tergesa-gesa.",
+          "Perkara baik datang kepada yang tidur.",
+          "Stres itu sementara. Berbaring itu selamanya."
+        ]
+      },
+      "tam": {
+        "tagline": "Bulu hitam gebu, mata keemasan, dan loceng kecil untuk umumkan kedatangan.",
+        "bio": "Tam menguruskan kawalan kualiti dengan menghidu segala-galanya di rumah. Gebu, ingin tahu, dan sentiasa mengikut jadual yang hanya Tam faham.",
+        "rows": [
+          [
+            "Jawatan rasmi",
+            "Pakar Hidu Bertauliah"
+          ],
+          [
+            "Jabatan",
+            "Menghidu, Siasatan & Kawalan Kualiti"
+          ],
+          [
+            "Kod pakaian",
+            "Serba hitam, dengan aksesori loceng kecil"
+          ],
+          [
+            "Kuasa luar biasa",
+            "Menyerap dalam gelap, kemudian muncul di sebelah awak"
+          ],
+          [
+            "Hobi kegemaran",
+            "Berjemur dan menyiasat setiap sudut"
+          ],
+          [
+            "Kelemahan",
+            "Gosok perut (ia perangkap, tapi sukar ditolak)"
+          ],
+          [
+            "Moto",
+            "Hidu dahulu, tanya kemudian."
+          ]
+        ],
+        "traits": [
+          "👃 Ketua penghidu",
+          "🌑 Tuan bayang-bayang",
+          "🔔 Kemunculan berkuasa loceng",
+          "🌞 Pakar berjemur"
+        ],
+        "quotes": [
+          "Hidu semuanya. Putuskan kemudian.",
+          "Bulu hitam sesuai dengan semua benda, termasuk mood yang buruk.",
+          "Kalau awak tak jumpa saya, mungkin saya di tempat terbaik dalam rumah.",
+          "Hari yang baik bermula dengan regangan yang panjang.",
+          "Gosok perut sehari mengelakkan rajuk.",
+          "Jadilah ingin tahu. Sudut bilik pun ada ceritanya."
+        ]
+      }
+    },
+
+    /* Open When... letters: parallel lists, same order in EN and BM */
+    letters: [
+      {
+        emoji: "🥹",
+        title: "Buka bila awak sedih",
+        texts: [
+          "Tak apa kalau rasa sedih. Awak tak perlu jelaskan atau selesaikannya hari ini.",
+          "Tarik nafas perlahan. Masuk empat, keluar enam. Awak okey.",
+          "Hari yang sedih tak berkekalan, walaupun terasa tiada penghujungnya sekarang.",
+          "Minum air dan longgarkan bahu awak. Kebaikan kecil pada diri sendiri pun dikira.",
+          "Awak tak perlu kuat setiap masa. Berehat itu dibenarkan.",
+          "Teddy dan Tam duduk betul-betul di sebelah awak. Tak perlu bercakap pun.",
+          "Perasaan awak masuk akal. Tiada sesiapa berhak suruh awak lupakan begitu sahaja.",
+          "Kalau boleh, keluar sekejap dan tengok langit. Ia membantu lebih daripada yang awak sangka.",
+          "Awak berjaya harungi setiap hari yang susah setakat ini. Rekod yang sempurna.",
+          "Apa pun yang berlaku hari ini, awak tetap seseorang yang layak disayangi.",
+          "Esok ialah halaman baharu. Malam ini, awak cuma perlu berlembut dengan diri sendiri."
+        ]
+      },
+      {
+        emoji: "🥱",
+        title: "Buka bila awak penat",
+        texts: [
+          "Awak dah banyak menanggung. Awak dibenarkan letak sekejap.",
+          "Berehat bukan malas. Itu cara untuk bersedia untuk esok.",
+          "Pejamkan mata seminit. Dunia boleh tunggu.",
+          "Senarai kerja akan ada nanti. Awak lebih penting daripada senarai itu.",
+          "Telefon pun perlu dicas. Awak juga.",
+          "Makan sesuatu, minum sesuatu, dan duduk di tempat yang selesa.",
+          "Buat lebih sedikit hari ini tak bermakna awak gagal.",
+          "Teddy tidur sepanjang hari dan dia masih bos. Awak pun boleh berehat.",
+          "Berjalan sekejap atau regangkan badan boleh menyegarkan sedikit. Atau tidur sekejap. Itu pun okey.",
+          "Berbanggalah dengan apa yang sempat awak buat hari ini, walaupun terasa kecil.",
+          "Tidur lebih awal malam ini. Awak di masa depan akan berterima kasih."
+        ]
+      },
+      {
+        emoji: "🌧️",
+        title: "Buka bila rasa tak cukup baik",
+        texts: [
+          "Awak jauh lebih daripada kesilapan dan hari-hari buruk awak.",
+          "Tiada siapa yang tahu semuanya. Semua orang belajar sambil jalan.",
+          "Orang gembira awak wujud, termasuk dua bos yang sangat gebu.",
+          "Membandingkan diri dengan orang lain tak adil. Awak hanya nampak bahagian terbaik mereka.",
+          "Awak tak perlu sempurna untuk menjadi berharga.",
+          "Fikirkan satu perkara yang awak buat dengan baik minggu ini. Ia dikira.",
+          "Bercakaplah dengan diri sendiri seperti awak bercakap dengan kawan baik.",
+          "Kesilapan ialah bukti awak cuba. Mencuba itu berani.",
+          "Awak sudah membesar lebih daripada yang awak sedar.",
+          "Kebaikan awak memberi kesan kepada orang di sekeliling.",
+          "Awak sudah cukup, sebagaimana awak hari ini."
+        ]
+      },
+      {
+        emoji: "🌙",
+        title: "Buka bila tak boleh tidur",
+        texts: [
+          "Turunkan bahu awak dan longgarkan rahang.",
+          "Apa yang bermain di fikiran akan masih ada esok, dan awak akan uruskannya lebih baik selepas berehat.",
+          "Cuba tarik nafas empat kiraan dan hembus enam. Atau pergi ke Sudut Dengkur.",
+          "Letak telefon kalau boleh. Skrin boleh tunggu sampai pagi.",
+          "Bayangkan Tam berbaring di tempat yang hangat dan lembut. Sekarang sertai dia.",
+          "Badan awak tahu cara tidur. Beri ia saat yang tenang.",
+          "Tak apa kalau tidur ambil masa. Berbaring dengan tenang pun sudah merehatkan.",
+          "Bayangkan tempat yang buat awak rasa selamat, dan tinggal di situ sebentar.",
+          "Kebimbangan esok ialah tugas esok. Malam ini untuk berehat.",
+          "Segelas air dan cahaya malap boleh membuat perbezaan besar.",
+          "Selamat malam. Awak sudah cukup berusaha hari ini."
+        ]
+      },
+      {
+        emoji: "🎉",
+        title: "Buka bila awak gembira",
+        texts: [
+          "Yeay! Simpan perasaan ini dan nikmatilah sepuas-puasnya.",
+          "Awak layak mendapat setiap bahagian kegembiraan ini.",
+          "Teddy dan Tam sedang berlari gembira untuk awak sekarang.",
+          "Ambil gambar dalam fikiran untuk saat ini. Awak akan perlukannya pada hari mendung.",
+          "Kongsi kegembiraan awak dengan seseorang hari ini. Ia jadi dua kali ganda.",
+          "Senyuman awak menjadikan dunia sedikit lebih cerah.",
+          "Menarilah sedikit, walaupun di atas kerusi sahaja.",
+          "Ingat bagaimana perasaan ini. Awak boleh kembali kepadanya.",
+          "Hari baik seperti ini bukti bahawa perkara baik memang berlaku.",
+          "Hadiahkan diri dengan snek untuk meraikannya. Teddy setuju.",
+          "Teruslah bersinar. Kami suka tengok awak gembira."
+        ]
+      }
+    ],
 
     /* Slides after the first note in A Little Note (the first slide is note1 + note2 above) */
     notes: [

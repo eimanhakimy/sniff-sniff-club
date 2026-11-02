@@ -21,6 +21,28 @@
     el.classList.add(cls);
   }
 
+  /* Little burst of emoji flying out of an element (skipped for reduced motion) */
+  function burst(el, emojis) {
+    if (reduceMotion || !el) return;
+    var r = el.getBoundingClientRect();
+    var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    for (var i = 0; i < 12; i++) {
+      var s = document.createElement("span");
+      s.className = "burst";
+      s.textContent = emojis[i % emojis.length];
+      var angle = (Math.PI * 2 * i) / 12 + Math.random() * 0.5;
+      var dist = 70 + Math.random() * 70;
+      s.style.left = cx + "px";
+      s.style.top = cy + "px";
+      s.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+      s.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+      s.style.setProperty("--rot", (Math.random() * 120 - 60) + "deg");
+      document.body.appendChild(s);
+      setTimeout(function (n) { return function () { n.remove(); }; }(s), 1000);
+    }
+  }
+  SSC.burst = burst;
+
   /* ---------- Language ---------- */
   function applyStatic() {
     var t = SSC.t().ui;
@@ -172,6 +194,7 @@
 
       setTimeout(function () {
         showResult();
+        burst(btn, ["🐽", "✨", "💛", "🐾"]);
         btn.classList.remove("is-sniffing-btn");
         busy = false;
       }, reduceMotion ? 150 : 1200);
@@ -209,6 +232,7 @@
       restartAnim(stage, "deploy");
       render();
       meow();
+      burst(btn, ["🚨", "🐾", "✨", "💥"]);
     });
     SSC.renderers.push(render);
   }
@@ -315,6 +339,7 @@
       result.hidden = false;
       restartAnim(result, "pop");
       render();
+      burst(btn, ["💤", "😴", "✨", "🌙"]);
     });
     SSC.renderers.push(render);
   }
@@ -394,25 +419,21 @@
     SSC.renderers.push(function () {
       cards.forEach(function (item) {
         item.querySelector(".gallery__open").setAttribute("aria-label", ui("openPhoto") + ": " + label(item));
+        var more = item.querySelector(".gallery__more");
+        if (more) more.setAttribute("aria-label", ui("seeMore") + ": " + item.querySelector(".gallery__name").textContent);
       });
     });
   }
 
-  /* ---------- Gallery section: every photo, filter by cat ---------- */
-  function initGallery() {
-    var grid = $("photo-grid");
-    var filters = document.querySelectorAll(".filter");
-    var names = { teddy: "Teddy", tam: "Tam" };
+  /* ---------- Photo grid: shows 9, "See all" reveals the rest (Gallery + profile albums) ---------- */
+  function makeGrid(grid, more, getItems) {
     var LIMIT = 9;               /* photos shown before "See all" */
-    var more = $("photo-more");
-    var current = "all";
+    var names = { teddy: "Teddy", tam: "Tam" };
     var expanded = false;
 
-    function visible() {
-      return SSC.photos.all.filter(function (p) { return current === "all" || p.who === current; });
-    }
+    function moreText(total) { return expanded ? ui("showLess") : ui("seeAll") + " (" + total + ")"; }
     function build() {
-      var items = visible();
+      var items = getItems();
       var files = items.map(function (p) { return p.file; });
       var shown = expanded ? items : items.slice(0, LIMIT);
       grid.innerHTML = "";
@@ -439,33 +460,96 @@
         grid.appendChild(li);
       });
       more.hidden = items.length <= LIMIT;
-      more.textContent = expanded ? ui("showLess") : ui("seeAll") + " (" + items.length + ")";
+      more.textContent = moreText(items.length);
     }
     more.addEventListener("click", function () {
       expanded = !expanded;
       build();
-      if (!expanded) $("photos").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      if (!expanded) grid.closest("section").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    });
+    SSC.renderers.push(function () {
+      more.textContent = moreText(getItems().length);
+      Array.prototype.forEach.call(grid.querySelectorAll("button"), function (b, i) {
+        b.setAttribute("aria-label", ui("openPhoto") + ": " + b.querySelector("img").alt + " " + (i + 1));
+      });
+    });
+    return { build: build, reset: function () { expanded = false; } };
+  }
+
+  /* ---------- Gallery section: every photo, filter by Teddy / Tam ---------- */
+  function initGallery() {
+    var filters = document.querySelectorAll(".filter");
+    var current = "all";
+    var g = makeGrid($("photo-grid"), $("photo-more"), function () {
+      return SSC.photos.all.filter(function (p) { return current === "all" || p.who === current; });
     });
     filters.forEach(function (f) {
       f.addEventListener("click", function () {
         current = f.dataset.filter;
-        expanded = false;
+        g.reset();
         filters.forEach(function (x) {
           var on = x === f;
           x.classList.toggle("is-active", on);
           x.setAttribute("aria-pressed", on ? "true" : "false");
         });
-        build();
+        g.build();
       });
     });
-    build();
-    SSC.renderers.push(function () {
-      more.textContent = expanded ? ui("showLess") : ui("seeAll") + " (" + visible().length + ")";
-      Array.prototype.forEach.call(grid.querySelectorAll("button"), function (b, i) {
-        var alt = b.querySelector("img").alt;
-        b.setAttribute("aria-label", ui("openPhoto") + ": " + alt + " " + (i + 1));
-      });
+    g.build();
+  }
+
+  /* ---------- CEO profile pages (teddy.html, tam.html) ---------- */
+  function initProfile() {
+    var who = document.body.dataset.who;
+    var other = document.body.dataset.other;
+    var capKey = { teddy: "cap1", tam: "cap2" }[who];
+    var nextQuote = bag(SSC.i18n.en.profiles[who].quotes.length);
+    var qi = nextQuote();
+
+    var g = makeGrid($("pf-grid"), $("pf-more"), function () {
+      return SSC.photos.all.filter(function (p) { return p.who === who; });
     });
+    g.build();
+
+    function render() {
+      var d = SSC.t().profiles[who];
+      $("pf-title").textContent = ui(capKey);
+      $("pf-tagline").textContent = d.tagline;
+      $("pf-bio").textContent = d.bio;
+      $("pf-quote").textContent = d.quotes[qi];
+      $("pf-other").textContent = ui(other === "tam" ? "meetTam" : "meetTeddy");
+
+      var chips = $("pf-traits");
+      chips.innerHTML = "";
+      d.traits.forEach(function (t) {
+        var li = document.createElement("li");
+        li.textContent = t;
+        chips.appendChild(li);
+      });
+
+      var rows = $("pf-rows");
+      rows.innerHTML = "";
+      d.rows.forEach(function (r) {
+        var wrap = document.createElement("div");
+        var dt = document.createElement("dt");
+        var dd = document.createElement("dd");
+        dt.textContent = r[0];
+        dd.textContent = r[1];
+        wrap.appendChild(dt);
+        wrap.appendChild(dd);
+        rows.appendChild(wrap);
+      });
+    }
+    $("pf-quote-btn").addEventListener("click", function () {
+      qi = nextQuote();
+      render();
+      restartAnim($("pf-quote"), "pop");
+    });
+    $("pf-photo").addEventListener("click", function () {
+      restartAnim($("pf-photo"), "is-sniffing");
+      burst($("pf-photo"), ["🐾", "✨", "💛", "🎉", "😻"]);
+    });
+    SSC.renderers.push(render);
   }
 
   /* ---------- A Little Note: swipeable slider ---------- */
@@ -529,7 +613,7 @@
 
   /* ---------- Bottom nav highlighting ---------- */
   function initNav() {
-    var groups = { home: "home", ceo: "cat", mood: "cat", happiness: "vibes", emergency: "vibes", note: "vibes", memes: "vibes", facts: "vibes", nap: "vibes", photos: "gallery", developer: "gallery" };
+    var groups = { home: "home", ceo: "cat", mood: "cat", happiness: "vibes", emergency: "vibes", note: "vibes", letters: "vibes", purr: "vibes", memes: "vibes", facts: "vibes", nap: "vibes", photos: "gallery", developer: "gallery" };
     var links = document.querySelectorAll(".bottomnav a");
     function mark(group) {
       links.forEach(function (a) { a.classList.toggle("is-active", a.dataset.group === group); });
@@ -547,20 +631,24 @@
     });
   }
 
+  /* run an init only on pages that have its element */
+  function when(id, fn) { if ($(id)) fn(); }
+
   document.addEventListener("DOMContentLoaded", function () {
     initImages();
-    initSoundToggle();
-    initSniff();
-    SSC.initMood();
-    initMemes();
-    initEmergency();
-    initLightbox();
+    when("sound-toggle", initSoundToggle);
+    when("sniff-btn", initSniff);
+    when("mood-result", SSC.initMood);
+    when("meme-btn", initMemes);
+    when("deploy-btn", initEmergency);
+    when("lightbox", initLightbox);
     initCeoCards();
-    initGallery();
-    initFacts();
-    initHappiness();
-    initNap();
-    initNotes();
+    when("photo-grid", initGallery);
+    when("fact-btn", initFacts);
+    when("happy-btn", initHappiness);
+    when("nap-btn", initNap);
+    when("note-track", initNotes);
+    if (document.body.dataset.who) initProfile();
     initNav();
     initLang();   /* last: fills in all text and runs every renderer */
   });

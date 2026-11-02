@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>try{var t=localStorage.getItem("ssc-theme");if(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t==="dark")document.documentElement.dataset.theme="dark";if(!sessionStorage.getItem("ssc-intro")&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("intro-on");}catch(e){}</script>
 </head>
 <body>
   <!--
@@ -23,16 +24,27 @@
 
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
+  <!-- Welcome screen (shown once per visit) -->
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-hi">
+    <div class="intro__paws" aria-hidden="true"><span>🐾</span><span>🐾</span><span>🐾</span><span>🐾</span><span>🐾</span><span>🐾</span></div>
+    <p class="intro__hi" id="intro-hi" data-i18n="introHi">Hi Nissa 🐾</p>
+    <p class="intro__sub" data-i18n="introSub">Teddy and Tam made a little corner of happiness just for you.</p>
+    <button class="btn btn--primary btn--big" id="intro-enter" type="button" data-i18n="introEnter">Come in</button>
+    <button class="intro__skip" id="intro-skip" type="button" data-i18n="introSkip">Skip</button>
+  </div>
+
   <!-- Language switch -->
   <div class="langswitch" role="group" aria-label="Language" data-i18n-label="langLabel">
     <button type="button" data-lang="en" aria-pressed="true">EN</button>
     <button type="button" data-lang="ms" aria-pressed="false">BM</button>
   </div>
+  <button class="themebtn" id="theme-btn" type="button" aria-pressed="false"></button>
 
   <main id="main">
 
     <!-- SECTION 01 · HERO -->
     <section id="home" class="section hero">
+      <div class="floaties" aria-hidden="true"><span>🐾</span><span>✨</span><span>💛</span><span>🐾</span><span>✨</span><span>💛</span></div>
       <p class="brand">🐾 Sniff Sniff Club</p>
       <h1 data-i18n="heroTitle">Hey, you! ♡</h1>
       <p class="hero__sub" data-i18n="heroSub">Need a little happiness?</p>
@@ -65,6 +77,7 @@
           </button>
           <h3 class="gallery__name">Teddy</h3>
           <p class="gallery__caption" data-i18n="cap1">CEO of Doing Absolutely Nothing.</p>
+          <a class="btn btn--soft btn--small gallery__more" href="teddy.html" data-i18n="seeMore">See more details</a>
         </li>
         <li class="gallery__item" data-cat="tam">
           <button type="button" class="gallery__open">
@@ -72,6 +85,7 @@
           </button>
           <h3 class="gallery__name">Tam</h3>
           <p class="gallery__caption" data-i18n="cap2">Certified Sniff Specialist.</p>
+          <a class="btn btn--soft btn--small gallery__more" href="tam.html" data-i18n="seeMore">See more details</a>
         </li>
       </ul>
     </section>
@@ -134,6 +148,29 @@
           <button class="slider__btn" id="note-next" type="button" aria-label="Next note" data-i18n-label="noteNext">›</button>
         </div>
       </div>
+    </section>
+
+    <!-- SECTION · OPEN WHEN LETTERS -->
+    <section id="letters" class="section">
+      <h2 data-i18n="lettersTitle">Open When... 💌</h2>
+      <p class="section__hint" data-i18n="lettersHint">Tap an envelope when you need it.</p>
+      <ul class="envelopes" id="envelopes"></ul>
+    </section>
+
+    <!-- SECTION · PURR CORNER -->
+    <section id="purr" class="section card card--lavender purr">
+      <h2 data-i18n="purrTitle">Purr Corner 🌙</h2>
+      <p class="section__hint" data-i18n="purrHint">Breathe slowly with Tam. In and out, no rush.</p>
+      <div class="breathe" id="breathe" data-phase="idle">
+        <div class="breathe__ring" aria-hidden="true"></div>
+        <img class="breathe__img" src="assets/tam/tam-04.jpg" alt="Tam resting peacefully" data-i18n-alt="altPurr" data-fallback="tam/tam-04.jpg" loading="lazy" width="400" height="400">
+      </div>
+      <p class="breathe__label" id="breathe-label"></p>
+      <div class="purr__btns">
+        <button class="btn btn--primary" id="breathe-btn" type="button"></button>
+        <button class="btn btn--soft" id="purr-btn" type="button" aria-pressed="false"></button>
+      </div>
+      <p class="purr__note" id="purr-note" role="status" aria-live="polite" hidden></p>
     </section>
 
     <!-- SECTION · MEME CORNER -->
@@ -203,6 +240,18 @@
     <a href="#photos" data-group="gallery"><span aria-hidden="true">📸</span><b data-i18n="navGallery">Gallery</b></a>
   </nav>
 
+  <!-- Open When... letter -->
+  <div class="letter" id="letter" role="dialog" aria-modal="true" aria-labelledby="letter-title" hidden>
+    <article class="letter__paper">
+      <button class="letter__close" id="letter-close" type="button" aria-label="Close letter" data-i18n-label="letterClose">✕</button>
+      <p class="letter__emoji" id="letter-emoji" aria-hidden="true"></p>
+      <h3 class="letter__title" id="letter-title"></h3>
+      <p class="letter__text" id="letter-text"></p>
+      <button class="btn btn--soft btn--small" id="letter-again" type="button" data-i18n="letterAgain">Another one 💌</button>
+      <p class="letter__sign">— Teddy, Tam &amp; ManKim 🐾</p>
+    </article>
+  </div>
+
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" data-i18n-label="lbLabel" hidden>
     <button class="lightbox__close" id="lb-close" type="button" aria-label="Close" data-i18n-label="lbClose">✕</button>
@@ -218,5 +267,6 @@
   <script src="js/photos.js"></script>
   <script src="js/mood.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/extras.js"></script>
 </body>
 </html>
